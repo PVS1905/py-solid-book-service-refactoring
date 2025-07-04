@@ -2,12 +2,12 @@ from app.models import Book, BookDisplay, BookPrint, BookSerializer
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
-    book_display = BookDisplay(book)
+    book_displays = BookDisplay(book)
     book_print = BookPrint(book)
     book_serialize = BookSerializer(book)
     for cmd, method_type in commands:
         if cmd == "display":
-            book_display.display(method_type)
+            book_displays.display(method_type)
         elif cmd == "print":
             book_print.print_book(method_type)
         elif cmd == "serialize":
