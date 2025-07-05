@@ -6,13 +6,19 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
         book_displays = BookDisplay(book)
         book_print = BookPrint(book)
         book_serialize = BookSerializer(book)
+
+        serialized_result = None
+
         for cmd, method_type in commands:
             if cmd == "display":
                 book_displays.display(method_type)
             elif cmd == "print":
                 book_print.print_book(method_type)
             elif cmd == "serialize":
-                return book_serialize.serialize(method_type)
+                serialized_result = book_serialize.serialize(method_type)
+
+        return serialized_result
+
     except Exception as e:
         print(f"Exception: {e}")
 
